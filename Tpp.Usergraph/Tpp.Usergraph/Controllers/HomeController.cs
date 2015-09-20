@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RestSharp;
 
 namespace Tpp.Usergraph.Controllers
 {
@@ -10,23 +11,18 @@ namespace Tpp.Usergraph.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "Use this to see a time vs. balance graph of your TPP earnings!";
 
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public void Graph(string username)
         {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var baseUrl = string.Format("http://www.twitchplaysleaderboard.info/api");
+            var restClient = new RestClient(baseUrl);
+            var restRequest = new RestRequest(string.Format("/user/history/{0}", username));
+            var response = restClient.Get(restRequest);
         }
     }
 }
