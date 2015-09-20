@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RestSharp;
+using Newtonsoft.Json;
+using Tpp.Usergraph.Models;
 
 namespace Tpp.Usergraph.Controllers
 {
@@ -24,6 +26,7 @@ namespace Tpp.Usergraph.Controllers
             var restRequest = new RestRequest(string.Format("/user/history/{0}", username));
             
             var response = restClient.Get(restRequest);
+            var userHistory = JsonConvert.DeserializeObject<History>(response.Content);
             // TODO: Do something with response
         }
     }

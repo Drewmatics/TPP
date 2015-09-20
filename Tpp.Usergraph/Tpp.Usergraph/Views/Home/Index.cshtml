@@ -8,11 +8,12 @@
             <h2>@ViewBag.Message</h2>
         </hgroup>
     </div>
+
 @using (Html.BeginForm("Graph", "Home"))
 {
-<div>
-    <label>Some label</label>
-    <input type="text" name="username" />
-    <input type="submit"/>
-</div>    
+    <div>
+        <label>Some label</label>
+        <input type="text" name="username" />
+        <input type="submit"/>
+    </div>    
 }
