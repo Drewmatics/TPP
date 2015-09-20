@@ -22,7 +22,9 @@ namespace Tpp.Usergraph.Controllers
             var baseUrl = string.Format("http://www.twitchplaysleaderboard.info/api");
             var restClient = new RestClient(baseUrl);
             var restRequest = new RestRequest(string.Format("/user/history/{0}", username));
+            
             var response = restClient.Get(restRequest);
+            // TODO: Do something with response
         }
     }
 }
