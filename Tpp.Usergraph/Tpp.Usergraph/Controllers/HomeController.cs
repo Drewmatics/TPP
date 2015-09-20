@@ -27,7 +27,7 @@ namespace Tpp.Usergraph.Controllers
             
             var response = restClient.Get(restRequest);
             var userHistory = JsonConvert.DeserializeObject<History>(response.Content);
-            // TODO: Do something with response
+            //TODO: Do something with user history
         }
     }
 }
