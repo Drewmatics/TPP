@@ -28,6 +28,7 @@ namespace Tpp.Usergraph.Controllers
             var response = restClient.Get(restRequest);
             var userHistory = JsonConvert.DeserializeObject<History>(response.Content);
             var matchData = userHistory.MatchData.FirstOrDefault();
+            ViewBag.Username = matchData.Nickname;
             ViewBag.Matches = matchData.Balance;
             return View();
         }

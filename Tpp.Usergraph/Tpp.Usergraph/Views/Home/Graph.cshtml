@@ -1,13 +1,29 @@
 ﻿@{
     ViewBag.Title = "Graph";
 }
-
-<h2>Graph</h2>
-Hello! You've reach the Graph View. 
-
-@foreach (var match in ViewBag.Matches)
-{
-    <li>
-        @match.Amount
-    </li>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+<h2>Graph</h2>
+<h3>Showing balance history data for @ViewBag.Username:</h3>
+<br />
+<table style="width:100%">
+    <tr>
+        <th>Date</th>
+        <th>Balance</th>
+    </tr>
+    @foreach (var match in ViewBag.Matches)
+    {
+    <tr>
+        <td>@match.Date</td>
+        <td>@match.Amount</td>
+    </tr>
+    }
+</table>
