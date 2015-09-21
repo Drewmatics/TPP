@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Graph";
+}
+
+<h2>Graph</h2>
+Hello! You've reach the Graph View. 
+
+@foreach (var match in ViewBag.Matches)
+{
+    <li>
+        @match.Amount
+    </li>
+}

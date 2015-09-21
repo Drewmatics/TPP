@@ -19,7 +19,7 @@ namespace Tpp.Usergraph.Controllers
         }
 
         [HttpPost]
-        public void Graph(string username)
+        public ActionResult Graph(string username)
         {
             var baseUrl = string.Format("http://www.twitchplaysleaderboard.info/api");
             var restClient = new RestClient(baseUrl);
@@ -27,7 +27,9 @@ namespace Tpp.Usergraph.Controllers
             
             var response = restClient.Get(restRequest);
             var userHistory = JsonConvert.DeserializeObject<History>(response.Content);
-            //TODO: Do something with user history
+            var matchData = userHistory.MatchData.FirstOrDefault();
+            ViewBag.Matches = matchData.Balance;
+            return View();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Tpp.Usergraph.Models
     public class History
     {
         public bool Success { get; set; }
-        public List<MatchData> Data { get; set; }
+        [JsonProperty(PropertyName = "data")]
+        public List<MatchData> MatchData { get; set; }
     }
 }
