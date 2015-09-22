@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Graph";
 }
+<script>
+    var username = '@(ViewBag.Username)';
+</script>
 <style>
 table, th, td {
     border: 1px solid black;
@@ -11,19 +14,13 @@ th, td {
     text-align: left;
 }
 </style>
-<h2>Hello @ViewBag.Username! You have played in @ViewBag.Count matches.</h2>
+<h2>Hello @ViewBag.Username!</h2>
 <h3>Here's your balance history:</h3>
+<div id="chart_div" style="width: 900px; height: 900px"></div>
 <br />
 <table style="width:100%">
     <tr>
         <th>Date</th>
         <th>Balance</th>
     </tr>
-    @foreach (var match in ViewBag.Matches)
-    {
-    <tr>
-        <td>@match.Date</td>
-        <td>@match.Amount</td>
-    </tr>
-    }
 </table>

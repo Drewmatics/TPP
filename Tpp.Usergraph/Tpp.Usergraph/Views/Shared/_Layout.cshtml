@@ -12,15 +12,12 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title">@Html.ActionLink("Twitchplayspokemon Balance Usergraph", "Index", "Tpp")</p>
                 </div>
                 <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Home", "Index", "Tpp")</li>
                         </ul>
                     </nav>
                 </div>
@@ -42,5 +39,7 @@
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="@Url.Content("../../Js/graph.js")"></script>
     </body>
 </html>
