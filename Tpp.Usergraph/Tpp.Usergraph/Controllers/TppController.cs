@@ -33,6 +33,9 @@ namespace Tpp.Usergraph.Controllers
             var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
             var userHistory = JsonConvert.DeserializeObject<History>(response.Content, serializerSettings);
             var matchData = userHistory.MatchData.FirstOrDefault();
+            matchData.Balance.RemoveAll(x => x.Amount <= 0);
+            if (matchData == null)
+                return null;
             return Json(matchData, JsonRequestBehavior.AllowGet);
         }
     }

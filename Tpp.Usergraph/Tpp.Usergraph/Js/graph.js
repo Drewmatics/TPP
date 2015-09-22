@@ -1,4 +1,4 @@
-﻿google.load('visualization', '1', { packages: ['corechart', 'line'] });
+﻿google.load('visualization', '1', { packages: ['AnnotationChart', 'line'] });
 google.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
@@ -20,15 +20,14 @@ function drawBasic() {
         data.addRows(rows);
 
         var options = {
-            hAxis: {
-                title: 'Date'
-            },
-            vAxis: {
-                title: 'Balance'
-            }
+            colors: ['#5C002E'],
+            thickness: 2,
+            fill: 50,
+            displayRangeSelector: false,
+            annotationsWidth: 50
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
 
         chart.draw(data, options);
     });
