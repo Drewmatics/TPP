@@ -33,10 +33,39 @@ namespace Tpp.Usergraph.Controllers
             var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
             var userHistory = JsonConvert.DeserializeObject<History>(response.Content, serializerSettings);
             var matchData = userHistory.MatchData.FirstOrDefault();
-            matchData.Balance.RemoveAll(x => x.Amount <= 0);
             if (matchData == null)
                 return null;
+            matchData.MaxPayouts= GetMaxPayouts(matchData, 5);
+            matchData.MaxLosses = GetMaxLosses(matchData, 5);
+            matchData.Balances.RemoveAll(x => x.Balance <= 0);
             return Json(matchData, JsonRequestBehavior.AllowGet);
+        }
+
+        private static List<KeyValuePair<int, int>> GetMaxPayouts(MatchData matchData, int numOfPayouts)
+        {
+            return GetPayouts(matchData).OrderByDescending(x => x.Value).Take(numOfPayouts).ToList();
+        }
+
+        private static List<KeyValuePair<int, int>> GetMaxLosses(MatchData matchData, int numOfPayouts)
+        {
+            return GetPayouts(matchData).OrderBy(x => x.Value).Take(numOfPayouts).ToList();
+        } 
+
+        private static Dictionary<int, int> GetPayouts(MatchData matchData)
+        {
+            var balances = matchData.Balances.Where(x => x.Id > 10000).ToList();
+            var payouts = new Dictionary<int, int>();
+            var firstBalance = balances.First();
+            balances.Remove(firstBalance);
+            foreach (var balance in balances)
+            {
+                var amount = balance.Balance - firstBalance.Balance;
+                if (firstBalance.Balance == 0)
+                    amount = 0;
+                payouts.Add(firstBalance.Id, amount);
+                firstBalance = balance;
+            }
+            return payouts;
         }
     }
 }

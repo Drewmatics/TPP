@@ -13,9 +13,9 @@ function drawBasic() {
         data.addColumn('number', 'Balance');
 
         var rows = [];
-        historyData.Balance.forEach(function (entry) {
+        historyData.Balances.forEach(function (entry) {
             var date = new Date(parseInt(entry.Date.replace("/Date(", "").replace(")/", "")));
-            rows.push([date, entry.Amount]);
+            rows.push([date, entry.Balance]);
         });
         data.addRows(rows);
 
