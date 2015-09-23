@@ -95,15 +95,39 @@ h5 a:link, h5 a:visited, h5 a:active {
     display: inline-flex;
 }
 
-#biggest-payouts{
-    border: 1px solid green;
-    background: white;
-    display: inline-block;
+#money-widgets {
+    margin-left: 20px;
 }
 
-#payouts-table {
-    border: none;
+#biggest-payouts, #biggest-losses{
+    border: 1px solid green;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: white;
+    display: inline-table;
+    height: 200px;
+    width: 200px;
 }
+
+#biggest-payouts #title, #biggest-losses #title {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+#payouts-table, #losses-table {
+    border: none;
+    margin-top: 0px;
+}
+
+#payouts-table tr th, #losses-table tr th {
+        border: none;
+        font-size: 12px;
+    }
+    
+#payouts-table tr td, #losses-table tr td {
+        border: none;
+    }
 
 #chart-div {
     display: inline-block;
@@ -116,32 +140,17 @@ h5 a:link, h5 a:visited, h5 a:active {
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
-    margin: 0 auto;
+    margin-left: 20px;
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #f7dab4;
     clear: both;
-    padding-bottom: 35px;
-}
-
-    .main-content {
-        background: url("../Images/accent.png") no-repeat;
-        padding-left: 10px;
-        padding-top: 30px;
-    }
-
-    .featured + .main-content {
-        background: url("../Images/heroAccent.png") no-repeat;
-    }
-
-header .content-wrapper {
-    padding-top: 20px; 
 }
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
+    background-color: #f7dab4;
     font-size: .8em;
     height: 100px;
 }

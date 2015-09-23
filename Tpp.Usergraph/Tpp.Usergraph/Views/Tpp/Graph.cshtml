@@ -1,9 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Graph";
+    ViewBag.Title = "TPP Usergraph by Drewmatics";
 }
 <script>
     var username = '@(ViewBag.Username)';
 </script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="@Url.Content("../../Js/graph.js")"></script>
 <style>
 table, th, td {
     border: 1px solid black;
@@ -17,15 +19,33 @@ th, td {
 <h2>Hello @ViewBag.Username!</h2>
 <h3>Here's your balance history:</h3>
 <div id="tpp-graph">
-    <div id="chart-div" style="width: 1000px; height: 500px;"></div>
-    <div id="biggest-payouts">
-        Your 5 biggest payouts from most recent PBR update:
+    <div id="chart-div" style="width: 800px; height: 500px;"></div>
+    <div id="money-widgets">
+        <div id="biggest-payouts">
+        <span id="title">Top 5 PAYOUTS</span>
         <table id="payouts-table">
             <tr>
-                <th> Battle Id </th>
-                <th> Payout </th>
-                <th> Picture </th>
+                <th> Amount </th>
+                <th></th>
             </tr>
         </table>
-    </div>    
+        </div>    
+        <div id="biggest-losses">
+            <span id="title">Top 5 losses</span>
+            <table id="losses-table">
+                <tr>
+                    <th> Amount </th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>   
+    </div>
 </div>
+@using (Html.BeginForm("Graph", "Tpp"))
+{
+<div id ="enter-username">
+    <label>Is this not you? Type your username here to see your earnings: </label>
+    <input type="text" name="username" />
+    <input type="submit"/>
+</div>    
+}

@@ -33,9 +33,15 @@ function drawGraph() {
 
         historyData.MaxPayouts.forEach(function(entry) {
             $("#payouts-table").append('<tr><td>'
-                + entry.Key + '</td><td>'
                 + entry.Value + '</td><td>'
-                + "<a href=\"http://twitchplaysleaderboard.info/results/pbr/" + entry.Key + "/\">Pic</a>"
+                + "<a href=\"http://twitchplaysleaderboard.info/results/pbr/" + entry.Key + "/\"><img src=\"../Images/picture.png\" target=\"_blank\" height=\"16\" width=\"16\"\"></a>"
+                + '</td></tr>');
+        });
+
+        historyData.MaxLosses.forEach(function (entry) {
+            $("#losses-table").append('<tr><td>'
+                + (entry.Value * -1) + '</td><td>'
+                + "<a href=\"http://twitchplaysleaderboard.info/results/pbr/" + entry.Key + "/\"><img src=\"../Images/picture.png\" target=\"_blank\" height=\"16\" width=\"16\"\"></a>"
                 + '</td></tr>');
         });
     });
