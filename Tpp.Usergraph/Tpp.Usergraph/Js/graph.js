@@ -1,8 +1,8 @@
 ﻿google.load('visualization', '1', { packages: ['AnnotationChart', 'line'] });
-google.setOnLoadCallback(drawBasic);
+google.setOnLoadCallback(drawGraph);
 
-function drawBasic() {
-    var jsonData = $.ajax({
+function drawGraph() {
+    $.ajax({
         url: 'History?username=' + username,
         dataType: "json",
         type: "GET",
@@ -27,8 +27,16 @@ function drawBasic() {
             annotationsWidth: 50
         };
 
-        var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.AnnotationChart(document.getElementById('chart-div'));
 
         chart.draw(data, options);
+
+        historyData.MaxPayouts.forEach(function(entry) {
+            $("#payouts-table").append('<tr><td>'
+                + entry.Key + '</td><td>'
+                + entry.Value + '</td><td>'
+                + "<a href=\"http://twitchplaysleaderboard.info/results/pbr/" + entry.Key + "/\">Pic</a>"
+                + '</td></tr>');
+        });
     });
 }

@@ -16,11 +16,16 @@ th, td {
 </style>
 <h2>Hello @ViewBag.Username!</h2>
 <h3>Here's your balance history:</h3>
-<div id="chart_div" style="width: 1000px; height: 500px;"></div>
-<br />
-<table style="width:100%">
-    <tr>
-        <th>Date</th>
-        <th>Balance</th>
-    </tr>
-</table>
+<div id="tpp-graph">
+    <div id="chart-div" style="width: 1000px; height: 500px;"></div>
+    <div id="biggest-payouts">
+        Your 5 biggest payouts from most recent PBR update:
+        <table id="payouts-table">
+            <tr>
+                <th> Battle Id </th>
+                <th> Payout </th>
+                <th> Picture </th>
+            </tr>
+        </table>
+    </div>    
+</div>

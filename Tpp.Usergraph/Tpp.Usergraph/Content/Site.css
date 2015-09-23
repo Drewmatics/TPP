@@ -85,10 +85,32 @@ h5, h6 {
     font-size: 1em;
 }
 
-    h5 a:link, h5 a:visited, h5 a:active {
-        padding: 0;
-        text-decoration: none;
-    }
+h5 a:link, h5 a:visited, h5 a:active {
+    padding: 0;
+    text-decoration: none;
+}
+
+/* Stuff I added*/
+#tpp-graph {
+    display: inline-flex;
+}
+
+#biggest-payouts{
+    border: 1px solid green;
+    background: white;
+    display: inline-block;
+}
+
+#payouts-table {
+    border: none;
+}
+
+#chart-div {
+    display: inline-block;
+}
+
+
+
 
 
 /* main layout
@@ -140,40 +162,6 @@ footer {
     outline: none;
     text-decoration: none;
 }
-
-
-/* login
-----------------------------------------------------------*/
-#login {
-    display: block;
-    font-size: .85em;
-    margin: 0 0 10px;
-    text-align: right;
-}
-
-    #login a {
-        background-color: #d3dce0;
-        margin-left: 10px;
-        margin-right: 3px;
-        padding: 2px 3px;
-        text-decoration: none;
-    }
-
-    #login a.username {
-        background: none;
-        margin: 0;
-        padding: 0;
-        text-decoration: underline;
-    }
-
-    #login ul {
-        margin: 0;
-    }
-
-    #login li {
-        display: inline;
-        list-style: none;
-    }
 
 
 /* menu

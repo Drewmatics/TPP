@@ -35,25 +35,25 @@ namespace Tpp.Usergraph.Controllers
             var matchData = userHistory.MatchData.FirstOrDefault();
             if (matchData == null)
                 return null;
-            matchData.MaxPayouts= GetMaxPayouts(matchData, 5);
-            matchData.MaxLosses = GetMaxLosses(matchData, 5);
+            matchData.MaxPayouts= GetBiggestPayouts(matchData, 5);
+            matchData.MaxLosses = GetBiggestLosses(matchData, 5);
             matchData.Balances.RemoveAll(x => x.Balance <= 0);
             return Json(matchData, JsonRequestBehavior.AllowGet);
         }
 
-        private static List<KeyValuePair<int, int>> GetMaxPayouts(MatchData matchData, int numOfPayouts)
+        private static List<KeyValuePair<int, int>> GetBiggestPayouts(MatchData matchData, int numOfPayouts)
         {
             return GetPayouts(matchData).OrderByDescending(x => x.Value).Take(numOfPayouts).ToList();
         }
 
-        private static List<KeyValuePair<int, int>> GetMaxLosses(MatchData matchData, int numOfPayouts)
+        private static List<KeyValuePair<int, int>> GetBiggestLosses(MatchData matchData, int numOfPayouts)
         {
             return GetPayouts(matchData).OrderBy(x => x.Value).Take(numOfPayouts).ToList();
         } 
 
         private static Dictionary<int, int> GetPayouts(MatchData matchData)
         {
-            var balances = matchData.Balances.Where(x => x.Id > 10000).ToList();
+            var balances = matchData.Balances.Where(x => x.Id > 19500).ToList();
             var payouts = new Dictionary<int, int>();
             var firstBalance = balances.First();
             balances.Remove(firstBalance);
